@@ -1,0 +1,33 @@
+semantic_models:
+  - name: users
+    description: Describes the details of the users
+    model: ref('stg_users')
+    defaults:
+      agg_time_dimension: created_at
+    entities:
+      - name: user_id
+        type: primary
+        expr: user_id
+    dimensions:
+      - name: created_at
+        description: "The date when the user has created the account"
+        type: time
+        label: Date of user joined
+        is_partition: true
+        type_params:
+          time_granularity: day
+    measures:
+      - name: total_users
+        agg: sum
+        expr: 1
+        description: "The total number of unique users in the application."
+
+metrics:
+  - name: total_users
+    type: simple
+    description: No of users in the application
+    label: users_count
+    type_params:
+      measure:
+        name: total_users
+        fill_nulls_with: 0

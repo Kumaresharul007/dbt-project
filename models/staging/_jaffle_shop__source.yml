@@ -1,0 +1,8 @@
+sources:
+  - name: jaffle_shop
+    database: ShopSphere
+    schema: public
+    tables:
+      - name: users
+      - name: products
+      - name: orders
