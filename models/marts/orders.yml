@@ -1,4 +1,4 @@
-semantic_models:
+semantic_models: 
   - name:  orders
     description: Describes the order details of the customers
     model: ref('stg_orders')
